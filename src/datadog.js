@@ -5,7 +5,7 @@ const dogstatsd = new StatsD();
 dogstatsd.increment('container.starts')
 
 tracer.init({
-  logInjection: true,
+  analytics: true,
 })
 console.log('datadog tracer running')
 

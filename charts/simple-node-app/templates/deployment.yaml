@@ -36,6 +36,10 @@ spec:
               value: production
             - name: RPLAN_ADDITIONAL_CONFIG_FILES
               value: /etc/actano/simple-node-app/config.yaml
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           ports:
             - name: http
               containerPort: 3000
