@@ -1,3 +1,4 @@
+import './datadog'
 import express from 'express'
 import bodyParser from 'body-parser'
 import createLogger from '@rplan/logger'
