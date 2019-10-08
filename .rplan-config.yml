@@ -5,6 +5,5 @@ server:
 logging:
   root_logger_name: simple-node-app
   human_readable: false
-external_requests:
-  service1: http://127.0.0.1:3048
+external_service: http://127.0.0.1:3048
 
