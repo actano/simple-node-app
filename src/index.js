@@ -6,8 +6,6 @@ import { router } from './routes.js'
 
 const logger = createLogger('server')
 
-// const externalService = config.get('external_service')
-
 export async function initApp() {
   const app = express()
   app.disable('x-powered-by')
