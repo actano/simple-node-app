@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name | default (include "simple-node-app.fullname" .) }}
+  labels:
+    app.kubernetes.io/name: {{ include "simple-node-app.name" . }}
+    helm.sh/chart: {{ include "simple-node-app.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- with .Values.serviceLabels }}
+      {{- toYaml . | nindent 4 }}
+    {{- end}}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "simple-node-app.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
