@@ -2,9 +2,12 @@ import { Router } from 'express'
 
 export const router = new Router()
 
-// define the home page route
 router.get('/', function (req, res) {
-  res.send('Birds home page')
+  res.send('Server is running. Please request some interesting route')
+})
+// define the home page route
+router.get('/health', function (req, res) {
+  res.status(200).send('OK')
 })
 // define the about route
 router.get('/about', function (req, res) {
